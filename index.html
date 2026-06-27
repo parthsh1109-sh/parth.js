@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarvis AI - Parth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="top-signature" aria-label="Parth profile signature">
+      <div class="signature-mark">P</div>
+      <div>
+        <p id="profileTitle">First-year B.Tech student and learning developer</p>
+        <h2 id="profileSignature">Parth</h2>
+      </div>
+    </section>
+
+    <section class="hero-panel">
+      <div class="brand-row">
+        <div class="pulse-dot"></div>
+        <span id="apiStatus">Checking API...</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">PARTH x JARVIS PROJECT</p>
+        <div class="jarvis-title-row">
+          <h1>JARVIS</h1>
+          <button id="danceWithMeButton" class="music-logo-wrap" type="button">
+            <div class="music-logo" aria-label="Animated music dancer">
+              <div class="music-note">♪</div>
+              <div class="dancer">
+                <span class="head"></span>
+                <span class="body"></span>
+                <span class="arm arm-left"></span>
+                <span class="arm arm-right"></span>
+                <span class="leg leg-left"></span>
+                <span class="leg leg-right"></span>
+              </div>
+              <div class="eq-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <p class="dance-caption">Dance with me</p>
+          </button>
+        </div>
+        <p id="profileIntro" class="subtitle">
+          Hello everyone, my name is Parth. I am a first-year B.Tech student at Swami Keshwanand Institute of Technology. This is my first Jarvis project, and I am very excited to work on it and improve my skills in programming and technology. Through this project, I am learning about web development, AI concepts, and software creation step by step.
+
+        </p>
+      </div>
+
+      <div class="support-card" aria-label="Support contact">
+        <div class="support-icon">
+          <span class="support-head"></span>
+          <span class="support-band"></span>
+          <span class="support-mic"></span>
+        </div>
+
+        <div class="support-details">
+          <p>Support Contact</p>
+          <a href="tel:+918955362402">+91 8955362402</a>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=parthsh1109@gmail.com"
+            class="gmail-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="gmail-logo">M</span>
+            parthsh1109@gmail.com
+          </a>
+          <small>AI Model: <b id="modelName">loading</b></small>
+        </div>
+      </div>
+
+      <div class="system-strip" aria-label="System monitor">
+        <div>
+          <span>Time</span>
+          <b id="systemTime">--:--</b>
+        </div>
+        <div>
+          <span>Memory</span>
+          <b id="systemMemory">--</b>
+        </div>
+        <div>
+          <span>Host</span>
+          <b id="systemHost">Jarvis</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat-panel" aria-label="Jarvis chat">
+      <div class="chat-header">
+        <div>
+          <p class="panel-label">AI Console</p>
+          <h2>Ask Jarvis</h2>
+        </div>
+        <div class="console-actions">
+          <button id="speakToggle" type="button">Speak</button>
+          <button id="clearChat" type="button">Clear</button>
+          <span class="live-chip">LIVE</span>
+        </div>
+      </div>
+
+      <div id="chatMessages" class="chat-messages">
+        <div class="message bot">
+          Hello Parth. Main Jarvis hoon. API key attach hote hi main ChatGPT/OpenAI se reply dunga.
+        </div>
+      </div>
+
+      <div class="voice-console" aria-live="polite">
+        <div>
+          <p class="panel-label">Voice Recognition</p>
+          <b id="voiceStatus">Mic ready</b>
+        </div>
+        <button id="voiceButton" class="voice-button" type="button" title="Start voice command">
+          <span class="mic-icon"></span>
+        </button>
+      </div>
+
+      <div class="quick-actions" aria-label="Quick Jarvis commands">
+        <button type="button" data-command="youtube kholo">YouTube</button>
+        <button type="button" data-command="whatsapp kholo">WhatsApp</button>
+        <button type="button" data-command="vs code kholo">VS Code</button>
+        <button type="button" data-command="spotify kholo">Spotify</button>
+        <button type="button" data-command="file explorer kholo">Files</button>
+        <button type="button" data-command="andaaz e karam chalao">Andaaz</button>
+      </div>
+
+      <form id="jarvisForm" class="chat-form">
+        <input
+          id="userMessage"
+          type="text"
+          placeholder="Ask Jarvis or say: open youtube, play music..."
+          autocomplete="off"
+          required
+        >
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <section class="music-panel" aria-label="Jarvis music player">
+      <div class="music-header">
+        <div>
+          <p class="panel-label">Music Core</p>
+          <h2>Jarvis Beats</h2>
+        </div>
+
+        <div class="music-controls">
+          <button id="stopTrack" type="button">Stop</button>
+          <button id="nextTrack" type="button">Next</button>
+        </div>
+      </div>
+
+      <div class="now-playing">
+        <span>Now Playing</span>
+        <b id="currentTrackName">Select a track</b>
+      </div>
+
+      <div id="trackList" class="track-list"></div>
+
+      <label class="volume-control" for="volumeControl">
+        <span>Volume</span>
+        <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.24">
+      </label>
+    </section>
+
+    <section class="command-panel" aria-label="Jarvis command center">
+      <div class="music-header">
+        <div>
+          <p class="panel-label">Command Center</p>
+          <h2>Launch Pad</h2>
+        </div>
+        <button id="refreshCommands" class="panel-button" type="button">Refresh</button>
+      </div>
+
+      <label class="launch-search" for="commandSearch">
+        <span>Search commands</span>
+        <input id="commandSearch" type="search" placeholder="Search app, website, folder, setting..." autocomplete="off">
+      </label>
+
+      <div id="commandGrid" class="command-grid"></div>
+    </section>
+
+    <section class="terms-panel" aria-label="Terms and conditions">
+      <div class="terms-header">
+        <p class="panel-label">Project Details</p>
+        <h2>Terms & Conditions</h2>
+      </div>
+
+      <div class="terms-grid">
+        <article>
+          <h3>Purpose</h3>
+          <p>This project is a personal learning assistant built for Parth. It is made for study, practice, productivity, music playback, local command launching, and understanding how frontend, backend, voice recognition, and APIs work together.</p>
+        </article>
+        <article>
+          <h3>Local Backend</h3>
+          <p>Computer apps and Windows features open only when the local Jarvis backend is running on localhost. The browser page alone cannot safely open system apps, so the backend uses an allowlist of approved commands.</p>
+        </article>
+        <article>
+          <h3>Privacy</h3>
+          <p>Voice recognition is handled by the browser after microphone permission is allowed. Chat messages may be sent to the selected AI provider only when a valid API key is configured. Personal API keys should stay inside the local .env file.</p>
+        </article>
+        <article>
+          <h3>Safety</h3>
+          <p>The assistant is designed to open known apps, folders, websites, and settings. It should not be used to run unknown scripts, delete files, bypass security prompts, or perform harmful system actions.</p>
+        </article>
+        <article>
+          <h3>Music</h3>
+          <p>Local songs placed in assets/songs are shown in the playlist. Only files that you have permission to use should be added. External music links open in a new browser tab.</p>
+        </article>
+        <article>
+          <h3>Limitations</h3>
+          <p>Some apps may not open if they are not installed, if Windows protocol links are disabled, or if the backend is not restarted after code changes. Chrome or Edge is recommended for voice recognition.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="dancePlaylistModal" class="playlist-modal" aria-hidden="true">
+    <div class="playlist-card" role="dialog" aria-modal="true" aria-labelledby="playlistTitle">
+      <div class="playlist-header">
+        <div>
+          <p class="panel-label">Dance with me</p>
+          <h2 id="playlistTitle">My Playlist</h2>
+        </div>
+        <button id="closePlaylist" class="close-playlist" type="button">Close</button>
+      </div>
+
+      <div class="playlist-now">
+        <span>Now Playing</span>
+        <b id="playlistNowPlaying">Select a song</b>
+      </div>
+
+      <div id="dancePlaylist" class="playlist-list"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('jarvisForm');
+    const input = document.getElementById('userMessage');
+    const chatMessages = document.getElementById('chatMessages');
+    const apiStatus = document.getElementById('apiStatus');
+    const modelName = document.getElementById('modelName');
+    const trackList = document.getElementById('trackList');
+    const currentTrackName = document.getElementById('currentTrackName');
+    const stopTrack = document.getElementById('stopTrack');
+    const nextTrack = document.getElementById('nextTrack');
+    const volumeControl = document.getElementById('volumeControl');
+    const danceWithMeButton = document.getElementById('danceWithMeButton');
+    const dancePlaylistModal = document.getElementById('dancePlaylistModal');
+    const dancePlaylist = document.getElementById('dancePlaylist');
+    const playlistNowPlaying = document.getElementById('playlistNowPlaying');
+    const closePlaylist = document.getElementById('closePlaylist');
+    const voiceButton = document.getElementById('voiceButton');
+    const voiceStatus = document.getElementById('voiceStatus');
+    const speakToggle = document.getElementById('speakToggle');
+    const clearChat = document.getElementById('clearChat');
+    const commandGrid = document.getElementById('commandGrid');
+    const commandSearch = document.getElementById('commandSearch');
+    const refreshCommands = document.getElementById('refreshCommands');
+    const systemTime = document.getElementById('systemTime');
+    const systemMemory = document.getElementById('systemMemory');
+    const systemHost = document.getElementById('systemHost');
+    const profileSignature = document.getElementById('profileSignature');
+    const profileTitle = document.getElementById('profileTitle');
+    const profileIntro = document.getElementById('profileIntro');
+    const API_BASE_URL = (
+      window.location.protocol === 'file:' ||
+      !['localhost:3000', '127.0.0.1:3000'].includes(window.location.host)
+    ) ? 'http://localhost:3000' : '';
+    const playlistAudio = new Audio();
+    const tracks = [
+      { name: 'Infinity Pulse', tempo: 118, wave: 'sine', notes: [261.63, 329.63, 392, 523.25] },
+      { name: 'Blue Limit', tempo: 126, wave: 'triangle', notes: [293.66, 369.99, 440, 587.33] },
+      { name: 'Cyber Shimmer', tempo: 132, wave: 'sawtooth', notes: [246.94, 311.13, 415.3, 493.88] },
+      { name: 'Neon Domain', tempo: 112, wave: 'square', notes: [220, 277.18, 329.63, 440] },
+      { name: 'Six Eyes Flow', tempo: 124, wave: 'sine', notes: [329.63, 392, 493.88, 659.25] },
+      { name: 'Midnight Override', tempo: 104, wave: 'triangle', notes: [196, 246.94, 293.66, 392] },
+      { name: 'AI Awakening', tempo: 120, wave: 'sawtooth', notes: [174.61, 261.63, 349.23, 523.25] },
+      { name: 'Hollow Glow', tempo: 130, wave: 'sine', notes: [277.18, 349.23, 415.3, 554.37] },
+      { name: 'Electric Aura', tempo: 138, wave: 'square', notes: [233.08, 293.66, 349.23, 466.16] },
+      { name: 'Crystal Runner', tempo: 116, wave: 'triangle', notes: [261.63, 392, 440, 659.25] },
+      { name: 'Future Memory', tempo: 108, wave: 'sine', notes: [185, 246.94, 369.99, 493.88] },
+      { name: 'Sky Circuit', tempo: 128, wave: 'sawtooth', notes: [207.65, 311.13, 415.3, 622.25] },
+      { name: 'Shadow Sync', tempo: 100, wave: 'triangle', notes: [164.81, 220, 329.63, 440] },
+      { name: 'Quantum Rush', tempo: 142, wave: 'square', notes: [293.66, 440, 587.33, 880] },
+      { name: 'Blue Flame', tempo: 122, wave: 'sine', notes: [246.94, 329.63, 493.88, 659.25] },
+      { name: 'Night Protocol', tempo: 110, wave: 'triangle', notes: [196, 261.63, 392, 523.25] },
+      { name: 'Butterfly Signal', tempo: 134, wave: 'sine', notes: [349.23, 440, 523.25, 698.46] },
+      { name: 'Jarvis Main Theme', tempo: 118, wave: 'sawtooth', notes: [220, 329.63, 440, 659.25] }
+    ];
+    let audioContext;
+    let masterGain;
+    let musicTimer;
+    let currentTrackIndex = -1;
+    let noteIndex = 0;
+    let recognition;
+    let isListening = false;
+    let speakReplies = false;
+    let commandCatalog = [];
+
+    function apiUrl(path) {
+      return `${API_BASE_URL}${path}`;
+    }
+
+    function addMessage(text, type) {
+      const message = document.createElement('div');
+      message.className = `message ${type}`;
+      message.textContent = text;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      if (type === 'bot') {
+        speak(text);
+      }
+    }
+
+    function speak(text) {
+      if (!speakReplies || !window.speechSynthesis) {
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text.replace(/\s+/g, ' ').slice(0, 220));
+      utterance.lang = 'hi-IN';
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    async function loadStatus() {
+      try {
+        const response = await fetch(apiUrl('/api/status'));
+        const data = await response.json();
+
+        modelName.textContent = data.model || 'unknown';
+
+        if (data.activeKeyLoaded) {
+          apiStatus.textContent = `${data.provider || 'AI'} API connected`;
+          document.body.classList.add('api-connected');
+        } else {
+          apiStatus.textContent = 'Add API key in .env';
+        }
+      } catch (error) {
+        apiStatus.textContent = 'Starting local backend...';
+        modelName.textContent = 'offline';
+      }
+    }
+
+    async function loadSystemInfo() {
+      try {
+        const response = await fetch(apiUrl('/api/system-info'));
+        const data = await response.json();
+
+        systemTime.textContent = data.serverTime || new Date().toLocaleTimeString();
+        systemMemory.textContent = data.memoryTotalMb
+          ? `${Math.round((data.memoryUsedMb / data.memoryTotalMb) * 100)}%`
+          : '--';
+        systemHost.textContent = data.hostname || 'Jarvis';
+      } catch (error) {
+        systemTime.textContent = new Date().toLocaleTimeString();
+        systemMemory.textContent = 'offline';
+        systemHost.textContent = 'local';
+      }
+    }
+
+    async function loadProfile() {
+      try {
+        const response = await fetch(apiUrl('/api/profile'));
+        const data = await response.json();
+
+        profileSignature.textContent = data.signature || data.name || 'Parth';
+        profileTitle.textContent = data.title || 'Learning developer';
+        profileIntro.textContent = data.intro || profileIntro.textContent;
+      } catch (error) {
+        profileSignature.textContent = 'Parth';
+      }
+    }
+
+    function renderCommandGrid(commands) {
+      if (!commands.length) {
+        commandGrid.innerHTML = '<p class="playlist-empty">No command found. Try searching app, folder, website, or setting.</p>';
+        return;
+      }
+
+      commandGrid.innerHTML = '';
+      commands.forEach((command) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'command-card';
+        button.innerHTML = `<b>${command.label}</b><small>${command.sample}</small>`;
+        button.addEventListener('click', () => handleUserCommand(command.sample, true));
+        commandGrid.appendChild(button);
+      });
+    }
+
+    function filterCommands() {
+      const query = normalizeVoiceText(commandSearch.value);
+
+      if (!query) {
+        renderCommandGrid(commandCatalog.slice(0, 36));
+        return;
+      }
+
+      const filtered = commandCatalog.filter((command) => {
+        const haystack = normalizeVoiceText([
+          command.label,
+          command.sample,
+          ...(command.keywords || [])
+        ].join(' '));
+
+        return haystack.includes(query);
+      });
+
+      renderCommandGrid(filtered);
+    }
+
+    async function loadCommandGrid() {
+      commandGrid.innerHTML = '<p class="playlist-empty">Loading commands...</p>';
+
+      try {
+        const response = await fetch(apiUrl('/api/commands'));
+        const data = await response.json();
+        commandCatalog = data.commands || [];
+        filterCommands();
+      } catch (error) {
+        commandGrid.innerHTML = '<p class="playlist-empty">Local Jarvis backend connect ho raha hai...</p>';
+        setTimeout(loadCommandGrid, 3000);
+      }
+    }
+
+    async function sendJarvisMessage(messageText, shouldAddUserMessage = true) {
+      const text = messageText.trim();
+      if (!text) {
+        return;
+      }
+
+      if (shouldAddUserMessage) {
+        addMessage(text, 'user');
+      }
+
+      input.value = '';
+      input.disabled = true;
+
+      try {
+        const response = await fetch(apiUrl('/api/jarvis'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: text })
+        });
+
+        const data = await response.json();
+        addMessage(data.reply || 'Jarvis ne empty response diya.', 'bot');
+        loadStatus();
+      } catch (error) {
+        addMessage('Local Jarvis backend connect ho raha hai. Page refresh karo agar command abhi load na ho.', 'bot');
+      } finally {
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      handleUserCommand(input.value.trim(), true);
+    });
+
+    function openPlaylistModal() {
+      dancePlaylistModal.classList.add('open');
+      dancePlaylistModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closePlaylistModal() {
+      dancePlaylistModal.classList.remove('open');
+      dancePlaylistModal.setAttribute('aria-hidden', 'true');
+    }
+
+    async function openDancePlaylist() {
+      openPlaylistModal();
+      dancePlaylist.innerHTML = '<p class="playlist-empty">Loading playlist...</p>';
+
+      try {
+        const response = await fetch(apiUrl('/api/dance-with-me'));
+        const data = await response.json();
+
+        if (!data.songs || data.songs.length === 0) {
+          dancePlaylist.innerHTML = '<p class="playlist-empty">assets/songs folder me apne songs add karo.</p>';
+          return;
+        }
+
+        dancePlaylist.innerHTML = '';
+
+        data.songs.forEach((song, index) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = `playlist-song ${song.source === 'youtube' ? 'youtube-song' : ''}`;
+          const label = song.source === 'youtube' ? 'Open on YouTube' : song.file;
+          button.innerHTML = `<span>${String(index + 1).padStart(2, '0')}</span><b>${song.title}</b><small>${label}</small>`;
+          button.addEventListener('click', () => {
+            if (song.source === 'youtube') {
+              playlistNowPlaying.textContent = `${song.title} opening on YouTube`;
+              window.open(song.url, '_blank', 'noopener,noreferrer');
+              return;
+            }
+
+            playlistAudio.src = song.url;
+            playlistAudio.volume = Number(volumeControl.value);
+            playlistAudio.play();
+            playlistNowPlaying.textContent = song.title;
+          });
+          dancePlaylist.appendChild(button);
+        });
+      } catch (error) {
+        dancePlaylist.innerHTML = '<p class="playlist-empty">Playlist backend connect nahi ho pa raha.</p>';
+      }
+    }
+
+    function setupAudio() {
+      if (audioContext) {
+        return;
+      }
+
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioContext.createGain();
+      masterGain.gain.value = Number(volumeControl.value);
+      masterGain.connect(audioContext.destination);
+    }
+
+    function playNote(track) {
+      const note = track.notes[noteIndex % track.notes.length];
+      const beatLength = 60 / track.tempo;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const filter = audioContext.createBiquadFilter();
+
+      oscillator.type = track.wave;
+      oscillator.frequency.setValueAtTime(note, audioContext.currentTime);
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1100 + (noteIndex % 4) * 380, audioContext.currentTime);
+      gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.34, audioContext.currentTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + beatLength * 0.76);
+
+      oscillator.connect(filter);
+      filter.connect(gain);
+      gain.connect(masterGain);
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + beatLength * 0.82);
+      noteIndex += 1;
+    }
+
+    function playTrack(index) {
+      setupAudio();
+      stopCurrentTrack();
+
+      currentTrackIndex = index;
+      noteIndex = 0;
+      currentTrackName.textContent = tracks[index].name;
+      document.body.classList.add('music-playing');
+      updateActiveTrack();
+
+      playNote(tracks[index]);
+      musicTimer = setInterval(() => playNote(tracks[index]), (60 / tracks[index].tempo) * 1000);
+    }
+
+    function stopCurrentTrack() {
+      if (musicTimer) {
+        clearInterval(musicTimer);
+        musicTimer = null;
+      }
+    }
+
+    function stopMusic() {
+      stopCurrentTrack();
+      currentTrackIndex = -1;
+      currentTrackName.textContent = 'Select a track';
+      document.body.classList.remove('music-playing');
+      updateActiveTrack();
+    }
+
+    function playNextTrack() {
+      const nextIndex = currentTrackIndex === -1 ? 0 : (currentTrackIndex + 1) % tracks.length;
+      playTrack(nextIndex);
+    }
+
+    function normalizeVoiceText(text) {
+      return text.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function findTrackByVoice(text) {
+      return tracks.findIndex((track) => text.includes(track.name.toLowerCase()));
+    }
+
+    function isMusicCommand(text) {
+      return (
+        text.includes('play music') ||
+        text.includes('play song') ||
+        text.includes('gaana') ||
+        text.includes('gana') ||
+        text.includes('song chala') ||
+        text.includes('music chala') ||
+        text.includes('dance')
+      );
+    }
+
+    async function runSystemCommand(text, options = {}) {
+      try {
+        const response = await fetch(apiUrl('/api/command'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await response.json();
+
+        if (!data.ok && options.silentOnMiss) {
+          return false;
+        }
+
+        addMessage(data.reply || 'Command complete.', 'bot');
+        voiceStatus.textContent = data.reply || 'Command complete';
+        return data.ok;
+      } catch (error) {
+        if (!options.silentOnMiss) {
+          addMessage('Command backend connect ho raha hai. Ek baar page refresh karo.', 'bot');
+        }
+
+        voiceStatus.textContent = 'Backend connecting...';
+        return false;
+      }
+    }
+
+    async function playPlaylistSongByVoice(text) {
+      try {
+        const response = await fetch(apiUrl('/api/dance-with-me'));
+        const data = await response.json();
+        const songs = data.songs || [];
+        const song = songs.find((item) => {
+          const title = normalizeVoiceText(item.title || '');
+          const file = normalizeVoiceText(item.file || '');
+
+          return title && (
+            text.includes(title) ||
+            title.includes(text.replace(/\b(play|song|gaana|gana|chalao|chala|karo)\b/g, '').trim()) ||
+            (text.includes('andaaz') && file.includes('andaaz e karam'))
+          );
+        });
+
+        if (!song) {
+          return false;
+        }
+
+        if (song.source === 'youtube') {
+          window.open(song.url, '_blank', 'noopener,noreferrer');
+        } else {
+          playlistAudio.src = song.url;
+          playlistAudio.volume = Number(volumeControl.value);
+          await playlistAudio.play();
+        }
+
+        playlistNowPlaying.textContent = song.title;
+        voiceStatus.textContent = `${song.title} playing`;
+        addMessage(`${song.title} chala diya.`, 'bot');
+        input.value = '';
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    async function handleUserCommand(rawText, shouldAddUserMessage) {
+      const text = normalizeVoiceText(rawText);
+
+      if (shouldAddUserMessage) {
+        addMessage(rawText, 'user');
+      }
+
+      input.value = rawText;
+
+      if (!text) {
+        return;
+      }
+
+      if (text.includes('stop') || text.includes('band karo') || text.includes('pause')) {
+        stopMusic();
+        playlistAudio.pause();
+        voiceStatus.textContent = 'Music stopped';
+        addMessage('Music stop kar diya.', 'bot');
+        return;
+      }
+
+      if (text.includes('clear chat') || text.includes('chat clear')) {
+        chatMessages.innerHTML = '';
+        addMessage('Chat clear kar diya.', 'bot');
+        input.value = '';
+        return;
+      }
+
+      if (text.includes('time') || text.includes('samay')) {
+        const now = new Date().toLocaleTimeString();
+        addMessage(`Current time: ${now}`, 'bot');
+        input.value = '';
+        return;
+      }
+
+      if (text.includes('next') || text.includes('agla')) {
+        playNextTrack();
+        voiceStatus.textContent = 'Next track playing';
+        addMessage('Next track chala diya.', 'bot');
+        return;
+      }
+
+      const trackIndex = findTrackByVoice(text);
+
+      if (trackIndex !== -1) {
+        playTrack(trackIndex);
+        voiceStatus.textContent = `${tracks[trackIndex].name} playing`;
+        addMessage(`${tracks[trackIndex].name} chala diya.`, 'bot');
+        return;
+      }
+
+      const playlistSongPlayed = await playPlaylistSongByVoice(text);
+
+      if (playlistSongPlayed) {
+        return;
+      }
+
+      if (isMusicCommand(text)) {
+        playNextTrack();
+        voiceStatus.textContent = 'Music playing';
+        addMessage('Gaana chala diya.', 'bot');
+        return;
+      }
+
+      const commandWorked = await runSystemCommand(text, { silentOnMiss: true });
+
+      if (commandWorked) {
+        input.value = '';
+        return;
+      }
+
+      await sendJarvisMessage(rawText, false);
+    }
+
+    async function handleVoiceCommand(spokenText) {
+      handleUserCommand(spokenText, true);
+    }
+
+    function setupVoiceRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+        voiceStatus.textContent = 'Voice only works in Chrome/Edge';
+        voiceButton.disabled = true;
+        return;
+      }
+
+      recognition = new SpeechRecognition();
+      recognition.lang = 'en-IN';
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.addEventListener('start', () => {
+        isListening = true;
+        voiceButton.classList.add('listening');
+        voiceStatus.textContent = 'Listening...';
+      });
+
+      recognition.addEventListener('result', (event) => {
+        const transcript = Array.from(event.results)
+          .map((result) => result[0].transcript)
+          .join(' ')
+          .trim();
+
+        input.value = transcript;
+        voiceStatus.textContent = transcript || 'Listening...';
+
+        if (event.results[event.results.length - 1].isFinal) {
+          handleVoiceCommand(transcript);
+        }
+      });
+
+      recognition.addEventListener('end', () => {
+        isListening = false;
+        voiceButton.classList.remove('listening');
+
+        if (voiceStatus.textContent === 'Listening...') {
+          voiceStatus.textContent = 'Mic ready';
+        }
+      });
+
+      recognition.addEventListener('error', (event) => {
+        isListening = false;
+        voiceButton.classList.remove('listening');
+        voiceStatus.textContent = event.error === 'not-allowed'
+          ? 'Mic permission allow karo'
+          : 'Voice error, try again';
+      });
+    }
+
+    function updateActiveTrack() {
+      document.querySelectorAll('.track-button').forEach((button, index) => {
+        button.classList.toggle('active', index === currentTrackIndex);
+      });
+    }
+
+    tracks.forEach((track, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'track-button';
+      button.innerHTML = `<span>${String(index + 1).padStart(2, '0')}</span><b>${track.name}</b><small>${track.tempo} BPM</small>`;
+      button.addEventListener('click', () => playTrack(index));
+      trackList.appendChild(button);
+    });
+
+    danceWithMeButton.addEventListener('click', openDancePlaylist);
+    closePlaylist.addEventListener('click', closePlaylistModal);
+    dancePlaylistModal.addEventListener('click', (event) => {
+      if (event.target === dancePlaylistModal) {
+        closePlaylistModal();
+      }
+    });
+    stopTrack.addEventListener('click', stopMusic);
+    nextTrack.addEventListener('click', playNextTrack);
+    volumeControl.addEventListener('input', () => {
+      if (masterGain) {
+        masterGain.gain.value = Number(volumeControl.value);
+      }
+    });
+    voiceButton.addEventListener('click', () => {
+      if (!recognition) {
+        return;
+      }
+
+      if (isListening) {
+        recognition.stop();
+        return;
+      }
+
+      recognition.start();
+    });
+    speakToggle.addEventListener('click', () => {
+      speakReplies = !speakReplies;
+      speakToggle.classList.toggle('active', speakReplies);
+      speakToggle.textContent = speakReplies ? 'Mute' : 'Speak';
+      addMessage(speakReplies ? 'Voice reply on hai.' : 'Voice reply off hai.', 'bot');
+    });
+    clearChat.addEventListener('click', () => {
+      chatMessages.innerHTML = '';
+      addMessage('Fresh console ready.', 'bot');
+    });
+    document.querySelectorAll('[data-command]').forEach((button) => {
+      button.addEventListener('click', () => handleUserCommand(button.dataset.command, true));
+    });
+    refreshCommands.addEventListener('click', loadCommandGrid);
+    commandSearch.addEventListener('input', filterCommands);
+
+    setupVoiceRecognition();
+    loadStatus();
+    loadProfile();
+    loadSystemInfo();
+    loadCommandGrid();
+    setInterval(loadSystemInfo, 15000);
+  </script>
+</body>
+</html>

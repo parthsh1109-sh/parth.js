@@ -1,0 +1,12 @@
+{
+  "name": "parth-jarvis-backend",
+  "version": "1.0.0",
+  "description": "Simple HTML, CSS, and Node.js Jarvis-style backend project.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "always-on:install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-always-on.ps1",
+    "always-on:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-backend.ps1",
+    "always-on:uninstall": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/uninstall-always-on.ps1"
+  }
+}
